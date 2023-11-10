@@ -14,6 +14,7 @@ import { getData, storeData } from '@/helpers/async-storage';
 import { useNetInfo } from '@react-native-community/netinfo';
 import { showWarningFlash } from '@/helpers/flash-message';
 import SearchScreenHeader from '@/components/search-screen/header';
+import { StatusBar } from 'expo-status-bar';
 
 const SearchScreen: React.FC<SearchScreenProps> = ({ navigation, route }) => {
   const [searchText, setSearchText] = useState<string>('');
@@ -89,7 +90,7 @@ const SearchScreen: React.FC<SearchScreenProps> = ({ navigation, route }) => {
   return (
     <SafeAreaView style={styles.root}>
       {searchCompleted ? (
-        <SearchScreenHeader setSearchCompleted={() => setSearchCompleted(false)} count={searchResults.length} />
+        <SearchScreenHeader count={searchResults.length} />
       ) : (
         <SearchBar onChange={handleOnChange} setSearchCompleted={() => setSearchCompleted(true)} value={searchText} />
       )}
@@ -110,6 +111,7 @@ const SearchScreen: React.FC<SearchScreenProps> = ({ navigation, route }) => {
           />
         </Fragment>
       ) : null}
+      <StatusBar style='dark' backgroundColor={Colors.white} />
     </SafeAreaView>
   );
 };

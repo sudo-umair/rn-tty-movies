@@ -4,11 +4,18 @@ import { ISearchScreenHeaderProps } from '@/interfaces/components';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '@/constants/colors';
 import { FontFamily, FontSize } from '@/constants/fonts';
+import { SearchScreenProps } from '@/interfaces/screens';
+import { useNavigation } from '@react-navigation/native';
+import { StackScreens } from '@/constants/screens';
 
-const SearchScreenHeader: React.FC<ISearchScreenHeaderProps> = ({ count, setSearchCompleted }) => {
+type Navigation = SearchScreenProps['navigation'];
+
+const SearchScreenHeader: React.FC<ISearchScreenHeaderProps> = ({ count }) => {
+  const navigation = useNavigation<Navigation>();
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={setSearchCompleted}>
+      <TouchableOpacity onPress={() => navigation.navigate(StackScreens.Home)}>
         <Ionicons name='chevron-back' size={30} color={Colors.dark} />
       </TouchableOpacity>
       <Text style={styles.count}>
