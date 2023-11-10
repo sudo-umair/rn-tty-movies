@@ -30,6 +30,7 @@ const BottomTabsNavigator = () => {
           fontFamily: FontFamily.BOLD,
         },
       }}
+      initialRouteName={TabsScreens.Watch}
     >
       <Tabs.Screen
         name={TabsScreens.DashBoard}

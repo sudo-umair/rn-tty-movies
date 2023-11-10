@@ -4,6 +4,7 @@ import { StackParamsList } from '@/interfaces/navigation';
 import { StackScreens } from '@/constants/screens';
 import WatchScreen from '@/screens/watch-screen';
 import { FontFamily } from '@/constants/fonts';
+import { Colors } from '@/constants/colors';
 
 const Stack = createNativeStackNavigator<StackParamsList>();
 
@@ -20,6 +21,7 @@ const WatchScreenNavigator = () => {
           headerTitle: 'Watch',
           headerTitleStyle: {
             fontFamily: FontFamily.BOLD,
+            color: Colors.dark,
           },
         }}
         name={StackScreens.Home}

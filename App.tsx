@@ -6,6 +6,7 @@ import { FontFamily } from '@/constants/fonts';
 import { useCallback } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppNavigation from '@/navigation';
+import FlashMessage from 'react-native-flash-message';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -32,6 +33,7 @@ export default function App() {
       <SafeAreaProvider>
         <AppNavigation />
       </SafeAreaProvider>
+      <FlashMessage position='top' />
       <StatusBar style='auto' />
     </View>
   );
