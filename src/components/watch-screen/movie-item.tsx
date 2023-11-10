@@ -31,10 +31,11 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 20,
     overflow: 'hidden',
+    height: 160,
   },
   image: {
     flex: 1,
-    height: 200,
+    height: '100%',
     width: '100%',
   },
   title: {

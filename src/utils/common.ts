@@ -16,5 +16,5 @@ export const findGenres = (genreIds: number[], type: TContentType): string => {
 };
 
 export const constructImageUrl = (backdrop_path: string): string => {
-  return `${API.IMAGE_URL}${backdrop_path}?api_key=${API.API_KEY}`;
+  return backdrop_path ? `${API.IMAGE_URL}${backdrop_path}?api_key=${API.API_KEY}` : '';
 };

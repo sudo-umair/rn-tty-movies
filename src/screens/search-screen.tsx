@@ -82,7 +82,7 @@ const SearchScreen: React.FC<SearchScreenProps> = ({ navigation, route }) => {
     }
   };
 
-  const check = useMemo(() => debouncedVal.length > 0 && searchResults.length > 0, [debouncedVal]);
+  const check = useMemo(() => debouncedVal.length > 0 && searchResults.length > 0, [debouncedVal, searchResults]);
 
   return (
     <SafeAreaView style={styles.root}>

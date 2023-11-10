@@ -33,7 +33,7 @@ export default function App() {
       <SafeAreaProvider>
         <AppNavigation />
       </SafeAreaProvider>
-      <FlashMessage position='top' />
+      <FlashMessage position='bottom' floating={true} />
       <StatusBar style='auto' />
     </View>
   );
