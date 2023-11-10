@@ -13,11 +13,13 @@ import { FontFamily, FontSize } from '@/constants/fonts';
 import { getData, storeData } from '@/helpers/async-storage';
 import { useNetInfo } from '@react-native-community/netinfo';
 import { showWarningFlash } from '@/helpers/flash-message';
+import SearchScreenHeader from '@/components/search-screen/header';
 
 const SearchScreen: React.FC<SearchScreenProps> = ({ navigation, route }) => {
   const [searchText, setSearchText] = useState<string>('');
   const [searchResults, setSearchResults] = useState<ISearchItem[]>([]);
   const [page, setPage] = useState<number>(1);
+  const [searchCompleted, setSearchCompleted] = useState<boolean>(false);
 
   const debouncedVal = useDebounceValue(searchText, 500);
   const [loading, setLoading] = useLoading();
@@ -86,7 +88,11 @@ const SearchScreen: React.FC<SearchScreenProps> = ({ navigation, route }) => {
 
   return (
     <SafeAreaView style={styles.root}>
-      <SearchBar onChange={handleOnChange} value={searchText} />
+      {searchCompleted ? (
+        <SearchScreenHeader setSearchCompleted={() => setSearchCompleted(false)} count={searchResults.length} />
+      ) : (
+        <SearchBar onChange={handleOnChange} setSearchCompleted={() => setSearchCompleted(true)} value={searchText} />
+      )}
       {check ? (
         <Fragment>
           <Text style={styles.resultsText}>Top Results</Text>

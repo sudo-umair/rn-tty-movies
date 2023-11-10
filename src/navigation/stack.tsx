@@ -28,7 +28,13 @@ const WatchScreenNavigator = () => {
         name={StackScreens.Home}
         component={WatchScreen}
       />
-      <Stack.Screen name={StackScreens.Search} component={SearchScreen} />
+      <Stack.Screen
+        options={{
+          statusBarColor: Colors.white,
+        }}
+        name={StackScreens.Search}
+        component={SearchScreen}
+      />
     </Stack.Navigator>
   );
 };

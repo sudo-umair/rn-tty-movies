@@ -5,7 +5,7 @@ import { Entypo, EvilIcons } from '@expo/vector-icons';
 import { ISearchBarProps } from '@/interfaces/components';
 import { Colors } from '@/constants/colors';
 
-const SearchBar: React.FC<ISearchBarProps> = ({ onChange, value }) => {
+const SearchBar: React.FC<ISearchBarProps> = ({ onChange, value, setSearchCompleted }) => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -17,6 +17,7 @@ const SearchBar: React.FC<ISearchBarProps> = ({ onChange, value }) => {
             style={styles.input}
             placeholder='TV Shows, Movies and More'
             placeholderTextColor={Colors.dark}
+            onSubmitEditing={setSearchCompleted}
           />
         </View>
         <Entypo name='cross' onPress={() => onChange('')} size={30} color='black' />

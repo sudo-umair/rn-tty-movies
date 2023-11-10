@@ -7,8 +7,13 @@ export interface IMovieItemProps {
 export interface ISearchBarProps {
   value: string;
   onChange: (value: string) => void;
+  setSearchCompleted: () => void;
 }
 
+export interface ISearchScreenHeaderProps {
+  count: number;
+  setSearchCompleted: () => void;
+}
 export interface ISearchItemProps {
   item: ISearchItem;
 }
