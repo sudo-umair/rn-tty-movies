@@ -3,7 +3,7 @@ import { Image } from 'expo-image';
 import React, { useMemo } from 'react';
 import { IMovieItemProps } from '@/interfaces/components';
 import { API } from '@/constants/api';
-import { FontFamily } from '@/constants/fonts';
+import { FontFamily, FontSize } from '@/constants/fonts';
 import { Colors } from '@/constants/colors';
 import { blurhash } from '@/constants/data';
 import { constructImageUrl } from '@/utils/common';
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     left: 10,
     fontFamily: FontFamily.REGULAR,
     color: Colors.background,
-    fontSize: 20,
+    fontSize: FontSize.H3,
     marginRight: 20,
   },
 });

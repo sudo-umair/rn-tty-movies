@@ -4,7 +4,7 @@ import { ISearchItemProps } from '@/interfaces/components';
 import { Image } from 'expo-image';
 import { blurhash } from '@/constants/data';
 import { constructImageUrl, findGenres } from '@/utils/common';
-import { FontFamily } from '@/constants/fonts';
+import { FontFamily, FontSize } from '@/constants/fonts';
 import { Colors } from '@/constants/colors';
 import { SimpleLineIcons } from '@expo/vector-icons';
 
@@ -59,13 +59,13 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: FontFamily.REGULAR,
     color: Colors.dark,
-    fontSize: 16,
+    fontSize: FontSize.H5,
     textAlignVertical: 'center',
   },
   genre: {
     fontFamily: FontFamily.REGULAR,
     color: Colors.lightGray,
-    fontSize: 12,
+    fontSize: FontSize.H7,
     textAlignVertical: 'center',
   },
   buttonContainer: {

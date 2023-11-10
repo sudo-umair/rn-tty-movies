@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import React from 'react';
-import { FontFamily } from '@/constants/fonts';
+import { FontFamily, FontSize } from '@/constants/fonts';
 import { Entypo, EvilIcons } from '@expo/vector-icons';
 import { ISearchBarProps } from '@/interfaces/components';
 import { Colors } from '@/constants/colors';
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontSize: 16,
+    fontSize: FontSize.H5,
     fontFamily: FontFamily.REGULAR,
     color: Colors.dark,
     textAlignVertical: 'center',

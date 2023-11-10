@@ -9,7 +9,7 @@ import useLoading from '@/hooks/useLoading';
 import { searchMulti } from '@/api/get';
 import { ISearchItem } from '@/interfaces/common';
 import SearchItem from '@/components/search-screen/search-item';
-import { FontFamily } from '@/constants/fonts';
+import { FontFamily, FontSize } from '@/constants/fonts';
 import { getData, storeData } from '@/helpers/async-storage';
 import { useNetInfo } from '@react-native-community/netinfo';
 import { showWarningFlash } from '@/helpers/flash-message';
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   resultsText: {
-    fontSize: 14,
+    fontSize: FontSize.H6,
     color: Colors.dark,
     fontFamily: FontFamily.BOLD,
     textAlignVertical: 'center',
