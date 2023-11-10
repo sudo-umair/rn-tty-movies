@@ -17,6 +17,7 @@ const WatchScreenNavigator = () => {
       <Stack.Screen
         options={{
           headerShown: true,
+          headerTitle: 'Watch',
           headerTitleStyle: {
             fontFamily: FontFamily.BOLD,
           },

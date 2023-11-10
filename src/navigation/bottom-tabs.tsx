@@ -6,6 +6,7 @@ import ComingSoon from '@/screens/coming-soon';
 import { Colors } from '@/constants/colors';
 import { Entypo, Feather, FontAwesome, Ionicons } from '@expo/vector-icons';
 import WatchScreenNavigator from './stack';
+import { FontFamily } from '@/constants/fonts';
 
 const Tabs = createBottomTabNavigator<BottomTabsParamList>();
 
@@ -15,12 +16,18 @@ const BottomTabsNavigator = () => {
       screenOptions={{
         headerShown: false,
         tabBarInactiveTintColor: Colors.darkGray,
-        tabBarActiveTintColor: Colors.white,
-
+        tabBarActiveTintColor: Colors.background,
         tabBarStyle: {
+          paddingHorizontal: '5%',
+          paddingVertical: '2%',
+          height: '8%',
           backgroundColor: Colors.dark,
           borderTopLeftRadius: 20,
           borderTopRightRadius: 20,
+        },
+        tabBarLabelStyle: {
+          marginBottom: '8%',
+          fontFamily: FontFamily.BOLD,
         },
       }}
     >
@@ -41,7 +48,7 @@ const BottomTabsNavigator = () => {
       />
       <Tabs.Screen
         name={TabsScreens.MediaLibrary}
-        initialParams={{ screenName: 'MediaLibrary' }}
+        initialParams={{ screenName: 'Media Library' }}
         options={{
           title: 'Media Library',
           tabBarIcon: ({ color, size }) => <Ionicons name='folder' size={size} color={color} />,
