@@ -1,9 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 import { FontFamily } from '@/constants/fonts';
 import { useCallback } from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import AppNavigation from '@/navigation';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -27,6 +29,9 @@ export default function App() {
 
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
+      <SafeAreaProvider>
+        <AppNavigation />
+      </SafeAreaProvider>
       <StatusBar style='auto' />
     </View>
   );
@@ -35,8 +40,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
