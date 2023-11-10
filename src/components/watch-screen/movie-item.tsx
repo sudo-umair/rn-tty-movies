@@ -5,15 +5,10 @@ import { IMovieItemProps } from '@/interfaces/components';
 import { API } from '@/constants/api';
 import { FontFamily } from '@/constants/fonts';
 import { Colors } from '@/constants/colors';
-
-const blurhash =
-  '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
+import { blurhash } from '@/constants/data';
+import { constructImageUrl } from '@/utils/common';
 
 const MovieItem: React.FC<IMovieItemProps> = ({ movie }) => {
-  const backDrop = useMemo(() => {
-    return `${API.IMAGE_URL}${movie.backdrop_path}?api_key=${API.API_KEY}`;
-  }, [movie.backdrop_path]);
-
   return (
     <TouchableOpacity activeOpacity={0.6} style={styles.container}>
       <Image
@@ -22,14 +17,14 @@ const MovieItem: React.FC<IMovieItemProps> = ({ movie }) => {
         placeholder={blurhash}
         contentFit='cover'
         transition={1000}
-        source={{ uri: backDrop }}
+        source={{ uri: constructImageUrl(movie.backdrop_path) }}
       />
       <Text style={styles.title}>{movie.title}</Text>
     </TouchableOpacity>
   );
 };
 
-export default MovieItem;
+export default React.memo(MovieItem);
 
 const styles = StyleSheet.create({
   container: {
@@ -39,7 +34,6 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    borderWidth: 1,
     height: 200,
     width: '100%',
   },

@@ -1,15 +1,15 @@
 import { AxiosResponse } from 'axios';
-import { IMovie } from './common';
+import { IMovie, ISearchItem } from './common';
 
 type APIResponse<T> = {
-  dates: {
-    maximum: string;
-    minimum: string;
-  };
   page: number;
   results: T;
   total_pages: number;
   total_results: number;
 };
 
-export type TFetchMoviesResponse = AxiosResponse<APIResponse<IMovie[]>>;
+export type TFetchMoviesResponse = AxiosResponse<
+  APIResponse<IMovie[]> & { dates: { maximum: string; minimum: string } }
+>;
+
+export type TSearchMultiResponse = AxiosResponse<APIResponse<ISearchItem[]>>;

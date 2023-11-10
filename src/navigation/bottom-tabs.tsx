@@ -29,6 +29,7 @@ const BottomTabsNavigator = () => {
           marginBottom: '8%',
           fontFamily: FontFamily.BOLD,
         },
+        tabBarHideOnKeyboard: true,
       }}
       initialRouteName={TabsScreens.Watch}
     >

@@ -11,6 +11,7 @@ import { getData, storeData } from '@/helpers/async-storage';
 import { AsyncStorageKeys } from '@/constants/async-storage';
 import { useNetInfo } from '@react-native-community/netinfo';
 import { showSuccessFlash, showWarningFlash } from '@/helpers/flash-message';
+import { StackScreens } from '@/constants/screens';
 
 const WatchScreen: React.FC<WatchScreenProps> = ({ navigation, route }) => {
   const [moviesList, setMoviesList] = useState<IMovie[]>([]);
@@ -21,7 +22,9 @@ const WatchScreen: React.FC<WatchScreenProps> = ({ navigation, route }) => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerRight: () => <Feather onPress={() => {}} name='search' size={24} color={Colors.dark} />,
+      headerRight: () => (
+        <Feather onPress={() => navigation.navigate(StackScreens.Search)} name='search' size={24} color={Colors.dark} />
+      ),
     });
   }, [navigation]);
 
@@ -31,7 +34,7 @@ const WatchScreen: React.FC<WatchScreenProps> = ({ navigation, route }) => {
       const response = await fetchMovies(page);
       const results = response.data.results;
       if (results.length > 0) {
-        setMoviesList((prev) => prev.concat(results));
+        setMoviesList((prev) => (page === 1 ? results : [...prev, ...results]));
         showSuccessFlash('Movies loaded');
         await storeData(AsyncStorageKeys.MOVIES, moviesList);
       }
@@ -46,9 +49,10 @@ const WatchScreen: React.FC<WatchScreenProps> = ({ navigation, route }) => {
   const fetchMoviesOffline = async () => {
     try {
       setLoading(true);
-      const moviesList = await getData<IMovie[]>(AsyncStorageKeys.MOVIES);
-      if (moviesList !== null && moviesList.length > 0) {
-        setMoviesList(moviesList.slice(0, page * 20));
+      const results = await getData<IMovie[]>(AsyncStorageKeys.MOVIES);
+      console.log(results);
+      if (results !== null && results.length > 0) {
+        setMoviesList(results.slice(0, page * 20));
         showSuccessFlash('Movies loaded from cache');
       } else {
         showWarningFlash('No movies in cache');
@@ -81,8 +85,8 @@ const WatchScreen: React.FC<WatchScreenProps> = ({ navigation, route }) => {
         keyExtractor={(item, index) => index.toString()}
         style={{ flex: 1 }}
         contentContainerStyle={{ rowGap: 10 }}
-        onEndReachedThreshold={0.1}
         refreshControl={<RefreshControl refreshing={loading} onRefresh={() => setPage(1)} />}
+        onEndReachedThreshold={1}
         onEndReached={() => setPage((prevPage) => prevPage + 1)}
       />
     </View>

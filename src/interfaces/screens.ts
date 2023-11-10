@@ -8,3 +8,8 @@ export type WatchScreenProps = CompositeScreenProps<
   NativeStackScreenProps<StackParamsList, StackScreens.Home>,
   BottomTabScreenProps<BottomTabsParamList>
 >;
+
+export type SearchScreenProps = CompositeScreenProps<
+  NativeStackScreenProps<StackParamsList, StackScreens.Search>,
+  BottomTabScreenProps<BottomTabsParamList>
+>;

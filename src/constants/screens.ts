@@ -7,4 +7,5 @@ export enum TabsScreens {
 
 export enum StackScreens {
   Home = 'Home',
+  Search = 'Search',
 }

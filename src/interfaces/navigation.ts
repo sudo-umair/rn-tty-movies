@@ -10,4 +10,5 @@ export type BottomTabsParamList = {
 
 export type StackParamsList = {
   [StackScreens.Home]: undefined;
+  [StackScreens.Search]: undefined;
 };
