@@ -13,8 +13,8 @@ const Pill = ({ title, onPress, style }: PillProps) => {
         styles.pill,
         style,
         {
-          backgroundColor: style?.backgroundColor ?? Colors.dark,
-          color: isColorDark(style?.backgroundColor ?? Colors.dark) ? Colors.white : Colors.dark,
+          backgroundColor: style?.backgroundColor ?? Colors.black,
+          color: isColorDark(style?.backgroundColor ?? Colors.black) ? Colors.white : Colors.black,
         },
       ]}
     >
