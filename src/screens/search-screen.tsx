@@ -1,4 +1,4 @@
-import { FlatList, RefreshControl, StyleSheet, Text, View } from 'react-native';
+import { FlatList, RefreshControl, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { Fragment, useEffect, useMemo, useState } from 'react';
 import { SearchScreenProps } from '@/interfaces/screens';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -15,6 +15,8 @@ import { useNetInfo } from '@react-native-community/netinfo';
 import { showWarningFlash } from '@/helpers/flash-message';
 import SearchScreenHeader from '@/components/search-screen/header';
 import { StatusBar } from 'expo-status-bar';
+import { blurhash, genresList } from '@/constants/data';
+import { Image } from 'expo-image';
 
 const SearchScreen: React.FC<SearchScreenProps> = ({ navigation, route }) => {
   const [searchText, setSearchText] = useState<string>('');
@@ -110,7 +112,29 @@ const SearchScreen: React.FC<SearchScreenProps> = ({ navigation, route }) => {
             extraData={searchResults}
           />
         </Fragment>
-      ) : null}
+      ) : (
+        <FlatList
+          data={genresList}
+          keyExtractor={(item, index) => index.toString()}
+          numColumns={2}
+          renderItem={({ item }) => (
+            <TouchableOpacity style={styles.container}>
+              <Image
+                style={styles.image}
+                cachePolicy={'disk'}
+                contentFit='cover'
+                placeholder={blurhash}
+                transition={1000}
+                source={{ uri: item.image }}
+              />
+              <Text style={styles.title}>{item.title}</Text>
+            </TouchableOpacity>
+          )}
+          style={{ flex: 1 }}
+          contentContainerStyle={{ rowGap: 10, padding: 10 }}
+          columnWrapperStyle={{ gap: 10 }}
+        />
+      )}
       <StatusBar style='dark' backgroundColor={Colors.white} />
     </SafeAreaView>
   );
@@ -136,5 +160,25 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.lightGray,
     marginVertical: 5,
     marginHorizontal: 10,
+  },
+  container: {
+    flex: 1,
+    borderRadius: 15,
+    overflow: 'hidden',
+    height: 160,
+    aspectRatio: 3 / 2,
+  },
+  image: {
+    flex: 1,
+    height: '100%',
+  },
+  title: {
+    position: 'absolute',
+    bottom: 10,
+    left: 10,
+    fontFamily: FontFamily.REGULAR,
+    color: Colors.background,
+    fontSize: FontSize.H4,
+    marginRight: 20,
   },
 });

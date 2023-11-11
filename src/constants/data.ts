@@ -44,3 +44,19 @@ export const genres: Record<TContentType, { id: number; name: string }[]> = {
     { id: 37, name: 'Western' },
   ],
 };
+
+// dummy data
+export const genresList: { title: string; image: string }[] = [
+  { title: 'Comedies', image: 'https://image.tmdb.org/t/p/w500//dQL2wJZo05GDd21VgOacMeCuyZy.jpg' },
+  { title: 'Dramas', image: 'https://image.tmdb.org/t/p/w500/l94l89eMmFKh7na2a1u5q67VgNx.jpg' },
+  { title: 'Thrillers', image: 'https://image.tmdb.org/t/p/w500/f2t4JbUvQIjUF5FstG1zZFAp02N.jpg' },
+  { title: 'Horror', image: 'https://image.tmdb.org/t/p/w500//bGMqHn0H2UY6SPZ5Vch4YJM2jDO.jpg' },
+  { title: 'Sci-Fi', image: 'https://image.tmdb.org/t/p/w500/x7Sz339F2oC8mBf0DHCQpKizXaL.jpg' },
+  { title: 'Documentaries', image: 'https://image.tmdb.org/t/p/w500/4qCqAdHcNKeAHcK8tJ8wNJZa9cx.jpg' },
+  { title: 'Romance', image: 'https://image.tmdb.org/t/p/w500/qdIMHd4sEfJSckfVJfKQvisL02a.jpg' },
+  { title: 'Action', image: 'https://image.tmdb.org/t/p/w500/DztBnZaqmla2sGUW9s8AyOmskT.jpg' },
+  { title: 'Anime', image: 'https://image.tmdb.org/t/p/w500/wgvc3PmjQGtYYDWaeuV867mnFDs.jpg' },
+  { title: 'Fantasy', image: 'https://image.tmdb.org/t/p/w500/r8pUcom5Mw8igtBpj3AHSAUvH0R.jpg' },
+  { title: 'Crime', image: 'https://image.tmdb.org/t/p/w500/kZyurQjTMLHalUxs7sHgH5XeiwO.jpg' },
+  { title: 'Mystery', image: 'https://image.tmdb.org/t/p/w500/uNRfK14Ga8Hwfqt07vo8nvWQN1i.jpg' },
+];
