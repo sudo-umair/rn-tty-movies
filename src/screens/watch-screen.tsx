@@ -36,7 +36,7 @@ const WatchScreen: React.FC<WatchScreenProps> = ({ navigation, route }) => {
       if (results.length > 0) {
         setMoviesList((prev) => (page === 1 ? results : [...prev, ...results]));
         showSuccessFlash('Movies loaded');
-        await storeData(AsyncStorageKeys.MOVIES, moviesList);
+        await storeData(AsyncStorageKeys.MOVIES, results);
       }
     } catch (error) {
       console.warn(error);

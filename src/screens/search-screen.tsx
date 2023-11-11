@@ -35,7 +35,7 @@ const SearchScreen: React.FC<SearchScreenProps> = ({ navigation, route }) => {
       const results = response.data.results;
       if (results.length > 0) {
         setSearchResults((prev) => (page === 1 ? results : [...prev, ...results]));
-        await storeData(debouncedVal, searchResults);
+        await storeData(debouncedVal, results);
       } else {
         showWarningFlash('No results found');
       }
