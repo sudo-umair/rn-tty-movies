@@ -35,6 +35,12 @@
         "projectId": "c82c7b56-ce37-40a8-9f44-96f2cd80ac71"
       }
     },
-    "owner": "oo_mayr"
+    "owner": "oo_mayr",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/c82c7b56-ce37-40a8-9f44-96f2cd80ac71"
+    }
   }
 }
