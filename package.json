@@ -7,7 +7,10 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "build:android": "eas build -p android --profile production",
+    "build:android-local": "eas build -p android --profile production --local",
+    "ota-build:android": "eas update --branch production"
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
