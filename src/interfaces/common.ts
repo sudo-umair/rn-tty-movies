@@ -20,6 +20,6 @@ export type TContentType = 'movie' | 'tv';
 export interface ISearchItem extends IMovie {
   name: string;
   media_type: TContentType;
-  first_air_date: '2018-08-27';
-  origin_country: ['FR'];
+  first_air_date: string;
+  origin_country: string[];
 }

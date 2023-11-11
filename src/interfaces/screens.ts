@@ -13,3 +13,8 @@ export type SearchScreenProps = CompositeScreenProps<
   NativeStackScreenProps<StackParamsList, StackScreens.Search>,
   BottomTabScreenProps<BottomTabsParamList>
 >;
+
+export type DetailsScreenProps = CompositeScreenProps<
+  NativeStackScreenProps<StackParamsList, StackScreens.Details>,
+  BottomTabScreenProps<BottomTabsParamList>
+>;

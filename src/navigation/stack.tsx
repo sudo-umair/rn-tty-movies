@@ -6,6 +6,7 @@ import { FontFamily } from '@/constants/fonts';
 import { Colors } from '@/constants/colors';
 import WatchScreen from '@/screens/watch-screen';
 import SearchScreen from '@/screens/search-screen';
+import DetailsScreen from '@/screens/details-screen';
 
 const Stack = createNativeStackNavigator<StackParamsList>();
 
@@ -29,6 +30,7 @@ const WatchScreenNavigator = () => {
         component={WatchScreen}
       />
       <Stack.Screen name={StackScreens.Search} component={SearchScreen} />
+      <Stack.Screen name={StackScreens.Details} component={DetailsScreen} />
     </Stack.Navigator>
   );
 };

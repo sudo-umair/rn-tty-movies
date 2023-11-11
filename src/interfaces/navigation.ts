@@ -1,5 +1,6 @@
 import { StackScreens, TabsScreens } from '@/constants/screens';
 import { NavigatorScreenParams } from '@react-navigation/native';
+import { ISearchItem } from './common';
 
 export type BottomTabsParamList = {
   [TabsScreens.DashBoard]: { screenName: string };
@@ -11,4 +12,5 @@ export type BottomTabsParamList = {
 export type StackParamsList = {
   [StackScreens.Home]: undefined;
   [StackScreens.Search]: undefined;
+  [StackScreens.Details]: { item: ISearchItem };
 };

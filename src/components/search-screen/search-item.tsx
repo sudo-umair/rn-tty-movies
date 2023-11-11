@@ -7,12 +7,24 @@ import { constructImageUrl, findGenres } from '@/utils/common';
 import { FontFamily, FontSize } from '@/constants/fonts';
 import { Colors } from '@/constants/colors';
 import { SimpleLineIcons } from '@expo/vector-icons';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { StackParamsList } from '@/interfaces/navigation';
+import { StackScreens } from '@/constants/screens';
+import { useNavigation } from '@react-navigation/native';
+
+type NavigationProp = NativeStackNavigationProp<StackParamsList, StackScreens.Details>;
 
 const SearchItem: React.FC<ISearchItemProps> = ({ item }) => {
+  const navigation = useNavigation<NavigationProp>();
+
   const genres = useMemo(() => findGenres(item.genre_ids, item.media_type), [item.genre_ids, item.media_type]);
 
+  const handlePress = () => {
+    navigation.navigate(StackScreens.Details, { item });
+  };
+
   return (
-    <TouchableOpacity activeOpacity={0.6} style={styles.container}>
+    <TouchableOpacity onPress={handlePress} activeOpacity={0.6} style={styles.container}>
       <Image
         style={styles.image}
         cachePolicy={'disk'}
@@ -23,7 +35,7 @@ const SearchItem: React.FC<ISearchItemProps> = ({ item }) => {
       />
       <View style={styles.detailsContainer}>
         <Text style={styles.title}>{item.name ?? item.title ?? 'Not Provided'}</Text>
-        {genres.length > 0 && <Text style={styles.genre}>{genres}</Text>}
+        {genres.length > 0 && <Text style={styles.genre}>{genres.join(', ')}</Text>}
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity>
