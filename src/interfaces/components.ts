@@ -12,9 +12,6 @@ export interface ISearchBarProps {
   setSearchCompleted: () => void;
 }
 
-export interface ISearchScreenHeaderProps {
-  count: number;
-}
 export interface ISearchItemProps {
   item: ISearchItem;
 }

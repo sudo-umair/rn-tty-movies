@@ -13,10 +13,10 @@ import { FontFamily, FontSize } from '@/constants/fonts';
 import { getData, storeData } from '@/helpers/async-storage';
 import { useNetInfo } from '@react-native-community/netinfo';
 import { showWarningFlash } from '@/helpers/flash-message';
-import SearchScreenHeader from '@/components/search-screen/header';
 import { StatusBar } from 'expo-status-bar';
 import { blurhash, genresList } from '@/constants/data';
 import { Image } from 'expo-image';
+import Header from '@/components/ui/header';
 
 const SearchScreen: React.FC<SearchScreenProps> = ({ navigation, route }) => {
   const [searchText, setSearchText] = useState<string>('');
@@ -88,11 +88,12 @@ const SearchScreen: React.FC<SearchScreenProps> = ({ navigation, route }) => {
   };
 
   const check = useMemo(() => debouncedVal.length > 0 && searchResults.length > 0, [debouncedVal, searchResults]);
+  const count = useMemo(() => searchResults.length, [searchResults]);
 
   return (
     <SafeAreaView style={styles.root}>
       {searchCompleted ? (
-        <SearchScreenHeader count={searchResults.length} />
+        <Header text={`${count} ${count === 1 ? 'result' : 'results'} found`} />
       ) : (
         <SearchBar onChange={handleOnChange} setSearchCompleted={() => setSearchCompleted(true)} value={searchText} />
       )}
