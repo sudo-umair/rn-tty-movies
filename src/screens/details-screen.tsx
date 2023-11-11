@@ -12,14 +12,15 @@ import { Entypo } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import PillContainer from '@/components/ui/pill-container';
 import { blurhash } from '@/constants/data';
-
-var customParseFormat = require('dayjs/plugin/customParseFormat');
-dayjs.extend(customParseFormat);
+import { useMemo } from 'react';
+import { TContentType } from '@/interfaces/common';
 
 const DetailsScreen: React.FC<DetailsScreenProps> = ({ navigation, route }) => {
   const { item } = route.params;
 
-  const date = dayjs(item.first_air_date).format('MMMM DD, YYYY');
+  const date = dayjs(item.release_date).format('MMMM DD, YYYY');
+
+  const genres = useMemo(() => findGenres(item.genre_ids), [item.genre_ids]);
 
   const handleNavigate = () => {};
 
@@ -55,7 +56,7 @@ const DetailsScreen: React.FC<DetailsScreenProps> = ({ navigation, route }) => {
           </LinearGradient>
         </View>
         <View style={styles.detailsContainer}>
-          <PillContainer data={findGenres(item.genre_ids, item.media_type)} section='Genres' />
+          <PillContainer data={genres} section='Genres' />
           <Text style={styles.heading}>OverView</Text>
           <Text style={styles.text}>{item.overview ?? 'N/A'}</Text>
         </View>

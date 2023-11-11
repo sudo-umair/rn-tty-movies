@@ -1,16 +1,27 @@
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Image } from 'expo-image';
-import React, { useMemo } from 'react';
+import React from 'react';
 import { IMovieItemProps } from '@/interfaces/components';
-import { API } from '@/constants/api';
 import { FontFamily, FontSize } from '@/constants/fonts';
 import { Colors } from '@/constants/colors';
 import { blurhash } from '@/constants/data';
 import { constructImageUrl } from '@/utils/common';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { StackParamsList } from '@/interfaces/navigation';
+import { StackScreens } from '@/constants/screens';
+import { useNavigation } from '@react-navigation/native';
+
+type NavigationProp = NativeStackNavigationProp<StackParamsList, StackScreens.Home>;
 
 const MovieItem: React.FC<IMovieItemProps> = ({ movie }) => {
+  const navigation = useNavigation<NavigationProp>();
+
+  const handlePress = () => {
+    navigation.navigate(StackScreens.Details, { item: movie });
+  };
+
   return (
-    <TouchableOpacity activeOpacity={0.6} style={styles.container}>
+    <TouchableOpacity onPress={handlePress} activeOpacity={0.6} style={styles.container}>
       <Image
         style={styles.image}
         cachePolicy={'disk'}

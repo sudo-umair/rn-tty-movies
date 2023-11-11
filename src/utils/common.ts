@@ -1,16 +1,14 @@
 import { API } from '@/constants/api';
 import { genres } from '@/constants/data';
-import { TContentType } from '@/interfaces/common';
 import { ColorValue } from 'react-native';
 
-export const findGenres = (genreIds: number[], type: TContentType): string[] => {
+export const findGenres = (genreIds: number[]): string[] => {
   if (Array.isArray(genreIds) && genreIds.length > 0) {
-    const genreList = genres[type];
     const genreNames = genreIds.map((id) => {
-      const genre = genreList.find((genre) => genre.id === id);
-      return genre?.name || '';
+      const genre = genres.find((genre) => genre.id === id);
+      return genre ? genre.name : '';
     });
-    return genreNames;
+    return genreNames.filter((name) => name !== '');
   } else {
     return ['N/A'];
   }

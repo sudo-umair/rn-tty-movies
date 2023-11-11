@@ -22,8 +22,8 @@ const BottomTabsNavigator = () => {
           paddingVertical: '2%',
           height: '8%',
           backgroundColor: Colors.dark,
-          borderTopLeftRadius: 20,
-          borderTopRightRadius: 20,
+          borderTopLeftRadius: 25,
+          borderTopRightRadius: 25,
         },
         tabBarLabelStyle: {
           marginBottom: '8%',

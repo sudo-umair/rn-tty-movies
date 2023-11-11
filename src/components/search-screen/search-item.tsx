@@ -17,7 +17,7 @@ type NavigationProp = NativeStackNavigationProp<StackParamsList, StackScreens.De
 const SearchItem: React.FC<ISearchItemProps> = ({ item }) => {
   const navigation = useNavigation<NavigationProp>();
 
-  const genres = useMemo(() => findGenres(item.genre_ids, item.media_type), [item.genre_ids, item.media_type]);
+  const genres = useMemo(() => findGenres(item.genre_ids), [item.genre_ids]);
 
   const handlePress = () => {
     navigation.navigate(StackScreens.Details, { item });
@@ -46,7 +46,7 @@ const SearchItem: React.FC<ISearchItemProps> = ({ item }) => {
   );
 };
 
-export default SearchItem;
+export default React.memo(SearchItem);
 
 const styles = StyleSheet.create({
   container: {
