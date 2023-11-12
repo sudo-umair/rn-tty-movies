@@ -88,7 +88,6 @@ const styles = StyleSheet.create({
     height: 450,
     width: '100%',
     flexDirection: 'row',
-    borderWidth: 1,
   },
   absolute: {
     position: 'absolute',
