@@ -34,9 +34,10 @@ const WatchScreen: React.FC<WatchScreenProps> = ({ navigation, route }) => {
       const response = await fetchMovies(page);
       const results = response.data.results;
       if (results.length > 0) {
-        setMoviesList((prev) => (page === 1 ? results : [...prev, ...results]));
+        const resultsNew = page === 1 ? results : [...moviesList, ...results];
+        setMoviesList(resultsNew);
         showSuccessFlash('Movies loaded');
-        await storeData(AsyncStorageKeys.MOVIES, results);
+        await storeData(AsyncStorageKeys.MOVIES, resultsNew);
       }
     } catch (error) {
       console.warn(error);
