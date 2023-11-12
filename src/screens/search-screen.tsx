@@ -108,9 +108,10 @@ const SearchScreen: React.FC<SearchScreenProps> = ({ navigation, route }) => {
             style={{ flex: 1 }}
             contentContainerStyle={{ rowGap: 10 }}
             refreshControl={<RefreshControl refreshing={loading} onRefresh={() => setPage(1)} />}
-            onEndReachedThreshold={2}
-            onEndReached={() => setPage((prevPage) => prevPage + 1)}
-            extraData={searchResults}
+            onEndReachedThreshold={0.5}
+            onEndReached={() => {
+              if (!loading) setPage((prevPage) => prevPage + 1);
+            }}
           />
         </Fragment>
       ) : (

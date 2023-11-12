@@ -87,8 +87,10 @@ const WatchScreen: React.FC<WatchScreenProps> = ({ navigation, route }) => {
         style={{ flex: 1 }}
         contentContainerStyle={{ rowGap: 10 }}
         refreshControl={<RefreshControl refreshing={loading} onRefresh={() => setPage(1)} />}
-        onEndReachedThreshold={1}
-        onEndReached={() => setPage((prevPage) => prevPage + 1)}
+        onEndReachedThreshold={0.5}
+        onEndReached={() => {
+          if (!loading) setPage((prevPage) => prevPage + 1);
+        }}
       />
     </View>
   );
