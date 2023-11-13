@@ -7,6 +7,7 @@ import { Colors } from '@/constants/colors';
 import { Entypo, Feather, FontAwesome, Ionicons } from '@expo/vector-icons';
 import WatchScreenNavigator from './stack';
 import { FontFamily } from '@/constants/fonts';
+import { Platform } from 'react-native';
 
 const Tabs = createBottomTabNavigator<BottomTabsParamList>();
 
@@ -20,10 +21,13 @@ const BottomTabsNavigator = () => {
         tabBarStyle: {
           paddingHorizontal: '5%',
           paddingVertical: '2%',
-          height: '8%',
           backgroundColor: Colors.dark,
           borderTopLeftRadius: 25,
           borderTopRightRadius: 25,
+          height: Platform.select({
+            ios: 90,
+            android: 60,
+          }),
         },
         tabBarLabelStyle: {
           marginBottom: '8%',

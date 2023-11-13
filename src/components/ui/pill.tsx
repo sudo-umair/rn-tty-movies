@@ -1,4 +1,4 @@
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, Platform } from 'react-native';
 import React from 'react';
 import { PillProps } from '@/interfaces/components';
 import { isColorDark } from '@/utils/common';
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.dark,
     paddingHorizontal: 10,
     paddingVertical: 5,
-    borderRadius: 25,
+    borderRadius: Platform.select({ ios: 15, android: 20 }),
     minHeight: 10,
     minWidth: 30,
     textAlign: 'center',
@@ -38,5 +38,6 @@ const styles = StyleSheet.create({
     fontSize: FontSize.H6,
     fontWeight: 'bold',
     fontFamily: FontFamily.REGULAR,
+    overflow: 'hidden',
   },
 });

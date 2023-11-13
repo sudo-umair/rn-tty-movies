@@ -1,11 +1,10 @@
 import { IHeaderProps } from '@/interfaces/components';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '@/constants/colors';
 import { FontFamily, FontSize } from '@/constants/fonts';
 import { useNavigation } from '@react-navigation/native';
-import { StackScreens } from '@/constants/screens';
 
 const Header: React.FC<IHeaderProps> = ({ text, style, textStyle, iconStyle, onPressBack }) => {
   const navigation = useNavigation<any>();
@@ -37,6 +36,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     alignItems: 'center',
     backgroundColor: Colors.white,
+    marginTop: Platform.select({ ios: 20, android: 10 }),
   },
   text: {
     color: Colors.dark,
@@ -45,6 +45,5 @@ const styles = StyleSheet.create({
     fontSize: FontSize.H4,
     textAlign: 'left',
     marginLeft: 10,
-    marginTop: 5,
   },
 });
