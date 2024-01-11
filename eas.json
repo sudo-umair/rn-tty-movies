@@ -10,11 +10,16 @@
     },
     "preview": {
       "distribution": "internal",
-      "channel": "preview"
-    },
-    "production": {
+      "channel": "preview",
       "android": {
         "buildType": "apk"
+      }
+    },
+    "production": {
+      "distribution": "store",
+      "android": {
+        "buildType": "app-bundle",
+        "autoIncrement": "versionCode"
       },
       "channel": "production"
     }

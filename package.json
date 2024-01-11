@@ -8,9 +8,12 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "build:android": "eas build -p android --profile production",
-    "build:android-local": "eas build -p android --profile production --local",
-    "ota-build:android": "eas update --branch production"
+    "update-android-preview": "eas update --branch preview",
+    "build-android-preview": "eas build -p android --profile preview",
+    "build-android-preview-local": "eas build -p android --profile preview --local",
+    "update-android-production": "eas update --branch production",
+    "build-android-production": "eas build -p android --profile production",
+    "build-android-production-local": "eas build -p android --profile production --local"
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
